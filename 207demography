@@ -2,6 +2,7 @@
 
 import csv
 import sys
+from calc import *
 
 try:
     if len(sys.argv) < 2:
@@ -9,8 +10,8 @@ try:
     with open('207demography_data.csv', newline='') as csvfile:
         reader = csv.reader(csvfile, delimiter=';')
         data = [row for row in reader]
-        countries = list(filter(lambda x: x[1] in sys.argv, data))
-        print(countries)
+        rows = list(filter(lambda x: x[1] in sys.argv, data))
+        do_calc(rows)
 except Exception as e:
     print(e)
     exit(84)
