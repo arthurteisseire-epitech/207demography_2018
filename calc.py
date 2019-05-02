@@ -47,4 +47,11 @@ def ax_b(years, val):
 
 
 def ay_b(years, val):
-    return 0, 0
+    year_sum = sum(years)
+    pop_2_sum = sum(map(lambda x: x * x, val))
+    pop_sum = sum(val)
+    pop_year_sum = sum(map(lambda x: x[0] * x[1], zip(years, val)))
+    b = (year_sum * pop_2_sum - pop_sum * pop_year_sum) / (len(years) * pop_2_sum - pow(pop_sum, 2))
+    a = (len(years) * pop_year_sum - pop_sum * year_sum) / (len(years) * pop_2_sum - pow(pop_sum, 2)) * 1000000
+    return a, b
+
