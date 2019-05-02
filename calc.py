@@ -1,7 +1,11 @@
 def fit1(years, rows):
-    ab = ax_b(years, rows)
-    print_fit(1, ab[0], ab[1], 5.32, 574.54)
-    pass
+    a = 0
+    b = 0
+    for row in rows:
+        ab = ax_b(years, row)
+        a += ab[0]
+        b += ab[1]
+    print_fit(1, a, b, 5.32, 574.54)
 
 
 def fit2(rows):
@@ -15,7 +19,7 @@ def corelation(rows):
 def do_calc(countries, years, values):
     print("Country: ", end="")
     print(*countries, sep=", ")
-    fit1(years, values[0])
+    fit1(years, values)
     fit2(values)
     corelation(values)
 
@@ -35,8 +39,4 @@ def ax_b(years, val):
     b = (pop_sum * year_2_sum - year_sum * pop_year_sum) / (len(years) * year_2_sum - pow(year_sum, 2)) / 1000000
     a = (len(years) * pop_year_sum - year_sum * pop_sum) / (len(years) * year_2_sum - pow(year_sum, 2)) / 1000000
     return a, b
-
-
-def tab_mean(tab):
-    pass
 
