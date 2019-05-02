@@ -21,7 +21,7 @@ def do_calc(countries, years, values):
 
 def print_fit(n, a, b, rm, pop):
     print("Fit%d" % n)
-    print("\t%c = %.2f %c %c %.2f" % ("Y" if n == 1 else "X", a, ("-" if b < 0 else "+"), "Y" if n == 2 else "X", abs(b)))
+    print("\t%c = %.2f %c %c %.2f" % ("Y" if n == 1 else "X", a, "Y" if n == 2 else "X", ("-" if b < 0 else "+"), abs(b)))
     print("\tRoot-mean-square deviation: %.2f" % rm)
     print("\tPopulation in 2050: %.2f" % pop)
 
