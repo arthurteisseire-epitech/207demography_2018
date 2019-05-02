@@ -12,13 +12,12 @@ def corelation(rows):
     pass
 
 
-def do_calc(years, rows):
-    countries = [c[0] for c in rows]
+def do_calc(countries, years, values):
     print("Country: ", end="")
     print(*countries, sep=", ")
-    fit1(str_to_nb(rows))
-    fit2(rows)
-    corelation(rows)
+    fit1(values[0])
+    fit2(values)
+    corelation(values)
 
 
 def print_fit(n, a, b, rm, pop):
@@ -37,7 +36,3 @@ def ax_b(rows):
     b = (pop_sum * year_2_sum - year_sum * pop_year_sum) / (len(year) * year_2_sum - pow(year_sum, 2)) / 1000000
     a = (len(year) * pop_year_sum - year_sum * pop_sum) / (len(year) * year_2_sum - pow(year_sum, 2)) / 1000000
     return a, b
-
-
-def str_to_nb(strtab):
-    return [int(value) for value in strtab[0][2:]]
