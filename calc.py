@@ -1,5 +1,6 @@
 def fit1(rows):
-    print("Y = %.2f X - %.2f" % (ax_b(rows)))
+    ab = ax_b(rows)
+    print_fit(1, ab[0], ab[1], 5.32, 574.54)
     pass
 
 
@@ -22,7 +23,7 @@ def do_calc(years, rows):
 
 def print_fit(n, a, b, rm, pop):
     print("Fit%d" % n)
-    print("\t%c = %.2f X - %.2f" % ("Y" if n == 1 else "X", a, b))
+    print("\t%c = %.2f X %c %.2f" % ("Y" if n == 1 else "X", a, ("-" if b < 0 else "+"), abs(b)))
     print("\tRoot-mean-square deviation: %.2f" % rm)
     print("\tPopulation in 2050: %.2f" % pop)
 
