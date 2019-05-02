@@ -1,3 +1,6 @@
+from math import sqrt
+
+
 def fit1(years, rows):
     a = 0
     b = 0
@@ -5,7 +8,8 @@ def fit1(years, rows):
         ab = ax_b(years, row)
         a += ab[0]
         b += ab[1]
-    print_fit(1, a, b, 5.32, 574.54)
+    r = rmsd(years, rows[0], a, b)
+    print_fit(1, a, b, r, 574.54)
 
 
 def fit2(rows):
@@ -29,6 +33,16 @@ def print_fit(n, a, b, rm, pop):
     print("\t%c = %.2f X %c %.2f" % ("Y" if n == 1 else "X", a, ("-" if b < 0 else "+"), abs(b)))
     print("\tRoot-mean-square deviation: %.2f" % rm)
     print("\tPopulation in 2050: %.2f" % pop)
+
+
+def rmsd(years, val, a, b):
+    # residual_sum = 0
+    # for i in range(0, len(years)):
+    #     y_circumflex = a * years[i] + b
+    #     residual = pow(val[i] - y_circumflex, 2)
+    #     residual_sum += residual
+    residual_sum = sum(map(lambda x: pow(x[1] - (a * x[0] + b), 2), zip(years, val)))
+    return sqrt(residual_sum / (len(years) - 2))
 
 
 def ax_b(years, val):

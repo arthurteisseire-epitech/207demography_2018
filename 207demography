@@ -2,6 +2,7 @@
 
 import csv
 import sys
+import traceback
 from calc import *
 
 
@@ -21,6 +22,6 @@ try:
         values = [str_to_nb(x[2:]) for x in rows]
         do_calc(countries, years, values)
 except Exception as e:
-    print(e)
+    print(traceback.format_exc())
     exit(84)
 
