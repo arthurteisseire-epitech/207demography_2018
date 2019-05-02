@@ -9,7 +9,7 @@ def fit1(years, rows):
         a += ab[0]
         b += ab[1]
     r = rmsd(years, rows[0], a, b)
-    print_fit(1, a, b, r, 574.54)
+    print_fit(1, a, b, r, a * 2050 + b)
 
 
 def fit2(rows):
