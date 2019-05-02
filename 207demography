@@ -10,8 +10,9 @@ try:
     with open('207demography_data.csv', newline='') as csvfile:
         reader = csv.reader(csvfile, delimiter=';')
         data = [row for row in reader]
+        years = [int(x) for x in data[0][2:]]
         rows = list(filter(lambda x: x[1] in sys.argv, data))
-        do_calc(rows)
+        do_calc(years, rows)
 except Exception as e:
     print(e)
     exit(84)

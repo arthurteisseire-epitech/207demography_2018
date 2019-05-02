@@ -10,7 +10,7 @@ def corelation(rows):
     pass
 
 
-def do_calc(rows):
+def do_calc(years, rows):
     countries = [c[0] for c in rows]
     print("Country: ", end="")
     print(*countries, sep=", ")
