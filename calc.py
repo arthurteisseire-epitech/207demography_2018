@@ -1,31 +1,22 @@
 from math import sqrt
 
 
-def fit1(years, rows):
+def fit(n, years, rows, f):
     a = 0
     b = 0
     for row in rows:
-        ab = ax_b(years, row)
+        ab = f(years, row)
         a += ab[0]
         b += ab[1]
     r = rmsd(years, rows[0], a, b)
-    print_fit(1, a, b, r, a * 2050 + b)
-
-
-def fit2(rows):
-    print_fit(2, 0.6, 1707.97, 5.32, 574.54)
-
-
-def corelation(rows):
-    pass
+    print_fit(n, a, b, r, a * 2050 + b)
 
 
 def do_calc(countries, years, values):
     print("Country: ", end="")
     print(*countries, sep=", ")
-    fit1(years, values)
-    fit2(values)
-    corelation(values)
+    fit(1, years, values, ax_b)
+    fit(2, years, values, ay_b)
 
 
 def print_fit(n, a, b, rm, pop):
@@ -54,3 +45,6 @@ def ax_b(years, val):
     a = (len(years) * pop_year_sum - year_sum * pop_sum) / (len(years) * year_2_sum - pow(year_sum, 2)) / 1000000
     return a, b
 
+
+def ay_b(years, val):
+    return 0, 0
