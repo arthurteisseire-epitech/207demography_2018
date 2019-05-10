@@ -6,7 +6,8 @@ def fit(n, years, rows, f):
         ab = f(years, row)
         a += ab[0]
         b += ab[1]
-    r = rmsd(n, years, rows[0], a, b)
+    sum_rows = [sum(x) for x in zip(*rows)]
+    r = rmsd(n, years, sum_rows, a, b)
     if n == 1:
         print_fit(1, a, b, r, a * 2050 + b)
     else:
