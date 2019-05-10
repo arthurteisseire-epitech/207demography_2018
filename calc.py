@@ -1,12 +1,8 @@
 from math import sqrt
 
 def fit(n, years, rows, f):
-    a = b = 0
-    for row in rows:
-        ab = f(years, row)
-        a += ab[0]
-        b += ab[1]
     sum_rows = [sum(x) for x in zip(*rows)]
+    a, b = f(years, sum_rows)
     r = rmsd(n, years, sum_rows, a, b)
     if n == 1:
         print_fit(1, a, b, r, a * 2050 + b)
