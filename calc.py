@@ -11,13 +11,15 @@ def fit(n, years, rows, f):
         print_fit(1, a, b, r, a * 2050 + b)
     else:
         print_fit(2, a, b, r, (2050 - b) / a)
+    return r
 
 
 def do_calc(countries, years, values):
     print("Country: ", end="")
     print(*countries, sep=", ")
-    fit(1, years, values, ax_b)
-    fit(2, years, values, ay_b)
+    r1 = fit(1, years, values, ax_b)
+    r2 = fit(2, years, values, ay_b)
+    print("Correlation: %.4f" % (r1 / r2))
 
 
 def print_fit(n, a, b, rm, pop):
